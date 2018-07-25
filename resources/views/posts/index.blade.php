@@ -35,7 +35,7 @@
                         </thead>
                         <tbody>
                                 @php
-                                $i = 0
+                                $i = 1
                                 @endphp
                                 @if(!empty($posts))
                                     @foreach($posts as $post)
