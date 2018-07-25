@@ -22,7 +22,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="POST" action="/posts">
+                    <form method="POST" action="{{url('/posts')}}">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="title">Title:</label>
@@ -35,7 +35,8 @@
                         <div class="checkbox">
                             <label><input name="published" type="checkbox" value="0"> Publish</label>
                         </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="submit" class="btn btn-danger">Submit</button>
+                        <a href="{{url('/posts')}}" class="btn btn-info"> Cancel </a>
                     </form>
                 </div>
             </div>

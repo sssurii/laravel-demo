@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
+                <a href="{{url('/posts/create')}}" class="btn btn-info pull-right"> Add Post </a>
                 <div class="panel-heading">Posts</div>
-
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
