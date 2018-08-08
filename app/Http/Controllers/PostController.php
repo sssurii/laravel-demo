@@ -17,6 +17,9 @@ class PostController extends Controller
     {
         //dd('hello');
         $posts = Post::all();
+        $bg_image = public_path('bg_image.png');
+        $image = resizeImage($bg_image, 680, 104, true);
+        dd($image);
         //
         return view('posts/index', compact('posts'));
     }
