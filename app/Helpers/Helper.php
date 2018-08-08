@@ -1,5 +1,6 @@
 <?php
 
+use Image;
 
 function getEmailHeaderImage($data){
        $bg_image = $space_info['background_logo'];
