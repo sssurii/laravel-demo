@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Redirect;
 use App\Post;
 use Illuminate\Http\Request;
 
