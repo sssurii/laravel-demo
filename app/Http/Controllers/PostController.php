@@ -49,6 +49,7 @@ class PostController extends Controller
         
         $post->save();
 
+        return Redirect::back()->withErrors(['status', 'Post saved successfully']);
     }
 
     /**
@@ -71,6 +72,7 @@ class PostController extends Controller
     public function edit($id)
     {
         //
+        Log::debug('Test debug message');
     }
 
     /**
