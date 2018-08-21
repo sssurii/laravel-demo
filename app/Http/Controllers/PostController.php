@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-       
+       \Log::debug('Test debug message');
         $posts = Post::all();
 
         return view('posts/index', compact('posts'));
