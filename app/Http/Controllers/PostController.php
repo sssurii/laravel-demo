@@ -73,7 +73,7 @@ class PostController extends Controller
     public function edit($id)
     {
         //
-        Log::debug('Test debug message');
+        \Log::debug('Test debug message');
     }
 
     /**
