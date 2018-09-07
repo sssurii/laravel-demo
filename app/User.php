@@ -28,12 +28,20 @@ class User extends Authenticatable
     ];
 
     public function Posts(){
-       return $this->hasMany("App\Post","user_id","id");
+        return $this->hasMany("App\Post", "user_id", "id");
     }
 
-    public function userProfile($value='')
+    public function userProfile($value = '')
     {
-        return $this->hasOne("App\UserProfile","user_id","id");
+        return $this->hasOne("App\UserProfile", "user_id", "id");
+    }
+
+    public function generateToken()
+    {
+        $this->access_token = str_random(60);
+        $this->save();
+
+        return $this->access_token;
     }
 
 }

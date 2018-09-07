@@ -35,7 +35,8 @@ class ApiRegisterController extends RegisterController
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            return response()->json(['success' => true]);
+            $user->generateToken();
+            return response()->json(['success' => true, 'user'=>$user]);
         }
         else {
             return response()->json(['error'=>'Unauthorised'], 401);
