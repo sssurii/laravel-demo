@@ -19,4 +19,5 @@ Route::middleware('api')->get('/hello_world', function () {
 
 Route::group(['middleware' => ['api','cors']], function () {
     Route::post('auth/register', 'Auth\ApiRegisterController@register');
+    Route::post('auth/login', 'Auth\ApiRegisterController@login');
 });

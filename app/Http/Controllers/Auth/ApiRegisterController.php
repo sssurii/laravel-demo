@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
 
 class ApiRegisterController extends RegisterController
 {
@@ -28,5 +29,16 @@ class ApiRegisterController extends RegisterController
         $this->guard()->login($user);
 
         return response(['user' => $user]);
+    }
+
+    public function login(Request $request){
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            return response()->json(['success' => true]);
+        }
+        else {
+            return response()->json(['error'=>'Unauthorised'], 401);
+        }
     }
 }
