@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('api')->get('/hello_world', function () {
+    return json_encode(['message' => 'hello world']);
+});
+
+Route::group(['middleware' => ['api','cors']], function () {
+    Route::post('auth/register', 'Auth\ApiRegisterController@register');
 });
