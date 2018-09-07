@@ -22,7 +22,7 @@ class ApiRegisterController extends RegisterController
         $errors = $this->validator($data)->errors();
 
         if (count($errors)) {
-            return response(['errors' => $errors], 400);
+            return response(['errors' => $errors], 422);
         }
         event(new Registered($user = $this->create($data)));
 
@@ -39,7 +39,7 @@ class ApiRegisterController extends RegisterController
             return response()->json(['success' => true, 'user'=>$user]);
         }
         else {
-            return response()->json(['error'=>'Unauthorised'], 400);
+            return response()->json(['error'=>'Unauthorised'], 401);
         }
     }
 }
