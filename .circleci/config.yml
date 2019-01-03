@@ -1,6 +1,7 @@
 version: 2
 jobs:
   test_build:
+    working_directory: ~/repo
     docker:
       - image: ucreateit/php7.2:v0.2
       - image: circleci/postgres:10
@@ -23,12 +24,20 @@ jobs:
           command: 
             sudo apt install -y libpq-dev
             sudo docker-php-ext-install pdo pdo_pgsql
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "composer.json" }}
+          - v1-dependencies-
       - run:
           name: Composer Install
-          command: composer install
+          command: composer install -n --prefer-dist
+      - save_cache:
+          paths:
+            - ./vendor
+          key: v1-dependencies-{{ checksum "composer.json" }}
       - run:
           name: Run Tests
-          command: sudo ./vendor/bin/phpunit --color=always
+          command: phpunit --color=always
 workflows:
   version: 2
   Test-build:
