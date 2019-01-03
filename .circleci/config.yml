@@ -1,0 +1,35 @@
+version: 2
+jobs:
+  test_build:
+    docker:
+      - image: ucreateit/php7.2:v0.2
+      - image: circleci/postgres:10
+    environment:
+      - APP_ENV: testing
+      - CACHE_DRIVER: file
+      - DB_DRIVER: postgres
+      - DB_USER: postgres
+      - DB_PASS: postgres
+      - DB_HOST: localhost
+      - DB_PORT: 5432
+      - DB_NAME: postgres
+    steps:
+      - checkout
+      - run:
+          name: Set DB URL
+          command: echo 'export DATABASE_URL=${DB_DRIVER}://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}' >> $BASH_ENV
+      - run:
+          name: Check And Install Dependency
+          command: 
+            sudo apt install -y libpq-dev
+            sudo docker-php-ext-install pdo pdo_pgsql
+      - run:
+          name: Composer Install
+          command: composer install
+      - run:
+          name: Run Tests
+          command: sudo ./vendor/bin/phpunit --color=always
+workflows:
+  version: 2
+  Test-build:
+    -test_build:
