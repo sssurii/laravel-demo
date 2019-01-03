@@ -1,7 +1,7 @@
 version: 2
 jobs:
   test_build:
-    working_directory: ~/repo
+    working_directory: ~/laravel-demo
     docker:
       - image: ucreateit/php7.2:v0.2
       - image: circleci/postgres:10
