@@ -44,7 +44,7 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
       - run:
           name: Run Tests
-          command: phpunit --color=always
+          command: vendor/bin/phpunit --color=always
 workflows:
   version: 2
   Test-build:
