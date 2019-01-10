@@ -20,9 +20,12 @@ jobs:
           name: Set DB URL
           command: echo 'export DATABASE_URL=${DB_DRIVER}://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}' >> $BASH_ENV
       - run:
-          name: Check And Install Dependency
+          name: Check Dependency
           command: 
-            sudo apt update -y \
+            sudo apt update -y
+      - run:
+          name: Install Dependency
+          command: 
             sudo apt install -y libpq-dev
             sudo docker-php-ext-install pdo pdo_pgsql
       - restore_cache:
