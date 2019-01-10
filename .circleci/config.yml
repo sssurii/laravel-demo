@@ -30,7 +30,7 @@ jobs:
       - run:
           name: Install PHP extensions
           command:
-            sudo docker-php-ext-install pdo pdo_pgsql exif && sudo pecl install imagick && docker-php-ext-enable imagick
+            sudo docker-php-ext-install pdo pdo_pgsql exif && apt-get install -y libmagickwand-dev && sudo pecl install imagick && docker-php-ext-enable imagick
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "composer.json" }}
