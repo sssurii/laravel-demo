@@ -27,6 +27,9 @@ jobs:
           name: Install Dependency
           command: 
             sudo apt install -y libpq-dev
+      - run:
+          name: Install PHP extensions
+          command:
             sudo docker-php-ext-install pdo pdo_pgsql
       - restore_cache:
           keys:
