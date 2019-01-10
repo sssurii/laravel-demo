@@ -14,11 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/email', 'HomeController@email');
 
 Auth::routes();
 
 Route::get('/blog', 'PostController@blog');
-Route::group(['middleware'=>['auth']], function(){
+Route::group(['middleware'=>['auth']], function() {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('posts', 'PostController');
 });

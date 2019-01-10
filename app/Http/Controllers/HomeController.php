@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Components\Email;
 
 class HomeController extends Controller
 {
@@ -24,5 +25,19 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function email(Request $request)
+    {
+        $input = $request->all();
+        $email = new Email();
+        $mail_data = [
+            'to'=> $input['email'],
+            'subject' => 'Invitation with ICS file',
+        ];
+
+        $email->sendMailWithICSFile($mail_data);
+
+        return null;
     }
 }
