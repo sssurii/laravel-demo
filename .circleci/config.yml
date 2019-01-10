@@ -22,7 +22,7 @@ jobs:
       - run:
           name: Check And Install Dependency
           command: 
-            sudo apt update -y
+            sudo apt update
             sudo apt install -y libpq-dev
             sudo docker-php-ext-install pdo pdo_pgsql
       - restore_cache:
