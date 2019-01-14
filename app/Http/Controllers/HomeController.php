@@ -24,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        \Log::error('Something went wrong', [
+            'person' => ['id' =>(string) 123, 'username' => 'John Doe', 'email' => 'john@doe.com']
+        ]);
         return view('home');
     }
 
