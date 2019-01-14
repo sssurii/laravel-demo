@@ -28,7 +28,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/',[],env('HTTPS_ENABLE', true)) }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -76,6 +76,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{url('js/app.js',[],env('HTTPS_ENABLE', true)) }}"></script>
+    <script src="{{ url('js/app.js',[],env('HTTPS_ENABLE', true)) }}"></script>
 </body>
 </html>
